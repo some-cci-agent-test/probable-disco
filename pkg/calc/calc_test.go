@@ -4,7 +4,6 @@ import (
 	"math/rand"
 	"os"
 	"testing"
-	"time"
 )
 
 // TestAdd is a stable test for Add.
@@ -47,10 +46,7 @@ func TestFlaky(t *testing.T) {
 		return
 	}
 
-	rand.Seed(time.Now().UnixNano())
 	if rand.Float64() < 0.3 { // 30% chance to fail
 		t.Fatalf("flaky failure: random threshold hit")
 	}
 }
-
-
