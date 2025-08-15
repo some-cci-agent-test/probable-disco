@@ -16,9 +16,28 @@ jobs:
           command: |
             go mod tidy
       - run:
-          name: Run tests (flaky enabled)
+          name: Install gotestsum
           command: |
-            go test -v ./...
+            go install gotest.tools/gotestsum@latest
+      - run:
+          name: Run tests and generate JUnit report
+          command: |
+            mkdir -p test-results
+            if $(go env GOPATH)/bin/gotestsum --junitfile test-results/unit-tests.xml --format standard-verbose -- -v ./...; then
+              echo 0 > test-results/exit_code
+            else
+              echo 1 > test-results/exit_code
+            fi
+      - store_test_results:
+          path: test-results
+      - store_artifacts:
+          path: test-results
+          destination: test-results
+      - run:
+          name: Fail job if tests failed
+          command: |
+            exit $(cat test-results/exit_code)
+          when: always
 
 workflows:
   test_suite:
