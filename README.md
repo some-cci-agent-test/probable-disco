@@ -1,4 +1,4 @@
-# probable-disco 
+# probable-disco
 
 Minimal Go module with a flaky test and CircleCI setup.
 
