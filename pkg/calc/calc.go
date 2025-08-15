@@ -5,17 +5,17 @@ func Add(a, b int) int {
 	return a + b
 }
 
-// Subtract returns the difference of a and b. 
+// Subtract returns the difference of a and b.
 func Subtract(a, b int) int {
 	return a - b
 }
 
-// Multiply returns the product of a and b. 
+// Multiply returns the product of a and b.
 func Multiply(a, b int) int {
 	return a * b
 }
 
-// Divide returns the integer division of a by b. 
+// Divide returns the integer division of a by b.
 // It panics if b is zero.
 func Divide(a, b int) int {
 	if b == 0 {
@@ -23,5 +23,3 @@ func Divide(a, b int) int {
 	}
 	return a / b
 }
-
-
