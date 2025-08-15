@@ -15,7 +15,7 @@ func Multiply(a, b int) int {
 	return a * b
 }
 
-// Divide returns the integer division of a by b. 
+// Divide returns the integer division of a by b.
 // It panics if b is zero.
 func Divide(a, b int) int {
 	if b == 0 {
